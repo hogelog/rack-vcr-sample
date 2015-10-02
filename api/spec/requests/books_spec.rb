@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Books", :type => :request do
+RSpec.describe "Books", type: :request, vcr: "books" do
   fixtures :books
 
   describe "books#index" do

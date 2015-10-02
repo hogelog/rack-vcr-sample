@@ -75,6 +75,8 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-vcr (0.1.4)
+      vcr (~> 2.9)
     rails (4.2.4)
       actionmailer (= 4.2.4)
       actionpack (= 4.2.4)
@@ -129,6 +131,7 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    vcr (2.9.3)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -142,6 +145,7 @@ DEPENDENCIES
   byebug
   jbuilder (~> 2.0)
   pry-byebug
+  rack-vcr
   rails (= 4.2.4)
   rspec-rails (~> 3.0)
   sqlite3
