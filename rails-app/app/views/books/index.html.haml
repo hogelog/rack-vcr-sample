@@ -1,0 +1,3 @@
+%ul
+  - @books.each do |book|
+    %li= link_to book["title"], book_path(book["id"])
