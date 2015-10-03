@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   def api_client
     conn ||= Faraday.new(url: Rails.application.config.api_url) do |faraday|
       faraday.request :url_encoded
-      faraday.response :logger
       faraday.adapter Faraday.default_adapter
     end
   end

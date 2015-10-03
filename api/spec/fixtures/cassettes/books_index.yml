@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.example.com/books
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Host:
+      - api.example.com
+      Accept:
+      - text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+      Cookie:
+      - ''
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"22f2ed095ba4bb64a7363f8473019839"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6f2aab0a-171f-48d5-999a-ce3b272a53e7
+      X-Runtime:
+      - '0.024091'
+      Content-Length:
+      - '214'
+    body:
+      encoding: UTF-8
+      string: '[{"id":1,"title":"K\u0026R","created_at":"2015-10-03T15:09:29.000Z","updated_at":"2015-10-03T15:09:29.000Z"},{"id":2,"title":"Camel","created_at":"2015-10-03T15:09:29.000Z","updated_at":"2015-10-03T15:09:29.000Z"}]'
+    http_version: 
+  recorded_at: Sat, 03 Oct 2015 15:09:29 GMT
+recorded_with: VCR 2.9.3

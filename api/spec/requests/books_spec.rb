@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Books", type: :request, vcr: "books" do
+RSpec.describe "Books", type: :request do
   fixtures :books
 
-  describe "books#index" do
+  describe "books#index", vcr: "books_index" do
     it "returns books" do
       get "/books"
       expect(response).to have_http_status(200)
@@ -13,7 +13,7 @@ RSpec.describe "Books", type: :request, vcr: "books" do
     end
   end
 
-  describe "books#show" do
+  describe "books#show", vcr: "books_show_200" do
     it "returns book" do
       get "/books/#{books(:c).id}"
       expect(response).to have_http_status(200)
