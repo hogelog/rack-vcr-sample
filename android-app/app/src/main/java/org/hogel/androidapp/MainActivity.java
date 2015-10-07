@@ -1,7 +1,7 @@
 package org.hogel.androidapp;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,24 +12,31 @@ import rx.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private ApiClient client;
+public class MainActivity extends Activity {
+    public static final String EXTRA_MOCK_VCR_CASSETTE = "mock_vcr_casette";
 
-    private ArrayList<Book> books;
+    final List<Book> books = new ArrayList<>();
 
-    private LinearLayout booksContainer;
+    LinearLayout booksContainer;
+
+    ApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        books = new ArrayList<>();
+        books.clear();
 
         booksContainer = (LinearLayout) findViewById(R.id.books_container);
+        String mockVcrCassette = getIntent().getStringExtra(EXTRA_MOCK_VCR_CASSETTE);
+        if (mockVcrCassette != null) {
+            client = new MockApiClient(mockVcrCassette);
+        } else {
+            client = new ApiClient();
+        }
 
-        ApiClient
-            .getBooks()
+        client.getBooks()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Action1<List<Book>>() {

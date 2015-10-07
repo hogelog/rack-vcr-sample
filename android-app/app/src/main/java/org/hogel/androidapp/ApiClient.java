@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiClient {
+    public ApiClient() {
+    }
+
     public static class UnknownResponseError extends Exception {
     }
 
