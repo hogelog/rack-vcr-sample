@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rack (1.6.4)
+    rack-vcr (0.1.4)
+      vcr (~> 2.9)
+    vcr (2.9.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack
+  rack-vcr
