@@ -13,12 +13,17 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "books#show", vcr: "books_show_200" do
-    it "returns book" do
+  describe "books#show" do
+    it "returns book", vcr: "books_show_200" do
       get "/books/#{books(:c).id}"
       expect(response).to have_http_status(200)
       data = JSON.parse(response.body)
       expect(data["title"]).to eq("K&R")
+    end
+
+    it "returns 404", vcr: "books_show_404" do
+      get "/books/0"
+      expect(response).to have_http_status(404)
     end
   end
 end

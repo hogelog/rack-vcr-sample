@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiClient {
-    public ApiClient() {
-    }
 
     public static class UnknownResponseError extends Exception {
     }
@@ -24,6 +22,16 @@ public class ApiClient {
     private static final OkHttpClient client = new OkHttpClient();
 
     private static final Type TYPE_BOOK_LIST = new TypeToken<ArrayList<Book>>(){}.getType();
+
+    private final String url;
+
+    public ApiClient(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 
     public Observable<List<Book>> getBooks() {
         final Request request = createRequest("/books");

@@ -3,16 +3,17 @@ package org.hogel.androidapp;
 import com.squareup.okhttp.Request;
 
 public class MockApiClient extends ApiClient {
-    private String cassette;
+    private final String cassette;
 
-    public MockApiClient(String cassette) {
+    public MockApiClient(String url, String cassette) {
+        super(url);
         this.cassette = cassette;
     }
 
     @Override
     protected Request createRequest(String path) {
         return new Request.Builder()
-            .url("http://10.0.3.2:9292" + path)
+            .url(getUrl() + path)
             .get()
             .addHeader("X_VCR_CASSETTE", cassette)
             .build();

@@ -13,13 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
-    public static final String EXTRA_MOCK_VCR_CASSETTE = "mock_vcr_casette";
+    private ApiClient client = new ApiClient("http://10.0.3.2:9292");
 
-    final List<Book> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
-    LinearLayout booksContainer;
-
-    ApiClient client;
+    private LinearLayout booksContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +25,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         books.clear();
-
         booksContainer = (LinearLayout) findViewById(R.id.books_container);
-        String mockVcrCassette = getIntent().getStringExtra(EXTRA_MOCK_VCR_CASSETTE);
-        if (mockVcrCassette != null) {
-            client = new MockApiClient(mockVcrCassette);
-        } else {
-            client = new ApiClient();
-        }
-
         client.getBooks()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

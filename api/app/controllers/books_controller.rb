@@ -5,7 +5,11 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    render json: @book.to_json
+    @book = Book.find_by(id: params[:id])
+    if @book
+      render json: @book.to_json
+    else
+      head 404
+    end
   end
 end
